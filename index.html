@@ -2,14 +2,24 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>LeadReview - An SI/VAR Team Tool</title>
+    <link rel="stylesheet" href="main.css">
   </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+  <script src="controls.js"></script>
+  <body >
+    <webview id="webview" style="display:inline-flex; width:100%; height:100vh; position: fixed; top: 0, left: 0; z-index: -1"></webview>
+    <div class="controlsContainer">
+      <div class="buttons">
+        <button style="background-color: green; border-color: green;"class="rank" onClick="handleRank(1)">High</button>
+        <button style="background-color: blue; border-color: blue;"class="rank" onClick="handleRank(2)">Medium</button>
+        <button style="background-color: red; border-color: red;"class="rank" onClick="handleRank(3)">Low</button>
+        <button style="background-color: blue; border-color: blue;"class="rank" onClick="handleRank(4)">Irrelevant</button>
+        <button style="background-color: red; border-color: red;"class="rank" onClick="handleRank(5)">No Site</button>
+      </div>
+      <div style="display: flex; height: ">
+        <textarea name="urls" id="urls" onchange="handleUrls()"></textarea><button>&times;</button>
+      </div>
+    </div>
   </body>
 
   <script>
