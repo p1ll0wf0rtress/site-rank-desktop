@@ -54,6 +54,17 @@ function handleNext(){
   document.getElementById('webview').src = state.urls[state.urlPager]
 }
 
+function hideUrlInput(){
+    if(document.getElementById('hideshow').innerHTML !== "show"){
+      document.getElementById('urls').style.display = "none";
+      document.getElementById('hideshow').innerHTML = "show";
+    }
+    else if(document.getElementById('hideshow').innerHTML == "show"){
+      document.getElementById('urls').style.display = "inherit";
+      document.getElementById('hideshow').innerHTML = "hide";
+    }
+}
+
 function handleRank(rank){
   if(state.urlPager < state.urls.length){
     pushToRankings(rank);

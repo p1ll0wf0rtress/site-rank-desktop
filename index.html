@@ -3,22 +3,24 @@
   <head>
     <meta charset="UTF-8">
     <title>LeadReview - An SI/VAR Team Tool</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <link rel="stylesheet" href="css/main.css" />
   </head>
   <script src="controls.js"></script>
   <body >
     <webview id="webview" style="display:inline-flex; width:100%; height:100vh; position: fixed; top: 0, left: 0; z-index: -1"></webview>
     <div class="controlsContainer">
       <div class="buttons">
-        <button style="background-color: green; border-color: green;"class="rank" onClick="handleRank(1)">High</button>
-        <button style="background-color: blue; border-color: blue;"class="rank" onClick="handleRank(2)">Medium</button>
-        <button style="background-color: red; border-color: red;"class="rank" onClick="handleRank(3)">Low</button>
-        <button style="background-color: blue; border-color: blue;"class="rank" onClick="handleRank(4)">Irrelevant</button>
-        <button style="background-color: red; border-color: red;"class="rank" onClick="handleRank(5)">No Site</button>
+        <button style="background-color: #157F1F; border-color: #157F1F;"class="rank" onClick="handleRank(1)">High</button>
+        <button style="background-color: #E7E247; border-color: #E7E247;"class="rank" onClick="handleRank(2)">Medium</button>
+        <button style="background-color: #F64740; border-color: #F64740;"class="rank" onClick="handleRank(3)">Low</button>
+        <button style="background-color: #477998; border-color: #477998;"class="rank" onClick="handleRank(4)">Irrelevant</button>
+        <button style="background-color: #FFFCF7; border-color: #FFFCF7;"class="rank" onClick="handleRank(5)">No Site</button>
       </div>
-      <div style="display: flex; height: ">
-        <textarea name="urls" id="urls" onchange="handleUrls()"></textarea><button>&times;</button>
-      </div>
+    </div>
+    <div class="urlsContainer">
+      <button style="color: white;" onclick="hideUrlInput()" id="hideshow">hide</button><br /><textarea name="urls" id="urls" wrap="off" onchange="handleUrls()"></textarea>
     </div>
   </body>
 
