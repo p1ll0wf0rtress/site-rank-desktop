@@ -4,28 +4,41 @@
     <meta charset="UTF-8">
     <title>LeadReview - An SI/VAR Team Tool</title>
     <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/skeleton.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/animate.css">
+    <script src="./jquery-3.2.1.min.js" charset="utf-8"></script>
   </head>
-  <script src="controls.js"></script>
-  <body >
-    <webview id="webview" style="display:inline-flex; width:100%; height:100vh; position: fixed; top: 0, left: 0; z-index: -1"></webview>
-    <div class="controlsContainer">
-      <div class="buttons">
-        <button style="background-color: #157F1F; border-color: #157F1F;"class="rank" onClick="handleRank(1)">High</button>
-        <button style="background-color: #E7E247; border-color: #E7E247;"class="rank" onClick="handleRank(2)">Medium</button>
-        <button style="background-color: #F64740; border-color: #F64740;"class="rank" onClick="handleRank(3)">Low</button>
-        <button style="background-color: #477998; border-color: #477998;"class="rank" onClick="handleRank(4)">Irrelevant</button>
-        <button style="background-color: #FFFCF7; border-color: #FFFCF7;"class="rank" onClick="handleRank(5)">No Site</button>
+  <body>
+    <div style="position: fixed; top: 0; text-align: right; width: 100%; background-color: #2d2d2d; z-index: 1">
+      <div id="toolbar" style="height: 30px; padding: 0px; margin: 0px 15px 0px 0px;">
+        <p id="progress" style="padding: 0 20px 0 20px; display: inline-block; color: white;" class="tools"></p>
+        <button onclick="hideUrlInput()" id="urlHide" class="tools">Toggle URL Input</button>
+        <button class="tools" onclick="handleDownload()">Download</button>
+        <div style="width: 300px; text-align: center; padding: 0px 20px 0px 20px; display: inline-block; color: black; background-color: white; border: 1px solid white; border-radius: 4px;">
+          <p id="currentAddress" style="margin-top: 0px;" class="tools"></p>
+        </div>
+        <button onclick="handleRank(1)" class="tools">High</button>
+        <button onclick="handleRank(2)" class="tools">Medium</button>
+        <button onclick="handleRank(3)" class="tools">Low</button>
+        <button onclick="handleRank(4)" class="tools">Irrelevant</button>
+        <button onclick="handleRank(5)" class="tools">No Site</button>
       </div>
     </div>
-    <div class="urlsContainer">
-      <button style="color: white;" onclick="hideUrlInput()" id="hideshow">hide</button><br /><textarea name="urls" id="urls" wrap="off" onchange="handleUrls()"></textarea>
+    <webview id="webview" style="width:100%; position: fixed; top: 30px; left: 0; z-index: -1"></webview>
+    <div id="urlInput" class="animated slideInDown" style="position: fixed; top: 30px; z-index: 0">
+      <textarea name="name" rows="8" cols="80" id="urls" placeholder="put some urls in here!" value="" onchange="handleUrls()" wrap="off" onfocusout="hideUrlInput()"></textarea>
     </div>
+    <img src="./Infinity.svg" alt="infinity logo" id="loading" style="height: 75px; width: 100px; position: fixed; bottom: 10px; right: 20px; z-index: 2"/>
   </body>
-
+  <script src="./controls.js" charset="utf-8"></script>
   <script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
+    require('./semantics.js');
+    require('./renderer.js');
+    webview.addEventListener('did-start-loading', function(){
+      document.getElementById('loading').style.display = 'block';
+    })
+    webview.addEventListener('did-stop-loading', function(){
+      document.getElementById('loading').style.display = 'none';
+    })
   </script>
 </html>

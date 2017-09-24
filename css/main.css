@@ -16,37 +16,31 @@ body {
   border-top-right-radius: 4px;
 }
 
-.buttons {
-  margin-bottom: 0.8rem;
-  font-family: 'Source Sans Pro', sans-serif;
+.tools {
+  max-height: 20px;
+  margin: 0px;
+  margin-top: 5px;
+  /*padding-top: 0px;
+  padding-bottom: 0px;*/
 }
 
-.urlsContainer {
-  z-index: 0;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(0,0,0,0.6);
-  padding: 0.5%;
+button.tools {
+  border: 1px solid;
+  border-radius: 4px;
+  font-size: 0.8rem;
 }
 
-textarea.hidden {
-  display: none;
+button:focus {
+  outline: none;
+}
+
+#urls {
+  border-top: 0px;
+  border-left: 0px;
+  border-bottom-right-radius: 4px;
 }
 
 textarea {
-  height: 91.1vh;
+  height: 70vh;
+  width: 275px;
 }
-
-/*button.rank {
-  border: 2px solid;
-  border-radius: 3px;
-  height: 2rem;
-  color: rgb(29, 29, 29);
-  font-size: 0.8rem;
-  font-weight: 700;
-  margin-left: 0.2rem;
-  margin-right: 0.2rem;
-  width: 6rem;
-  letter-spacing: 0.06rem;
-}*/

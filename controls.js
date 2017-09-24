@@ -2,14 +2,15 @@
 
 let state = {
   urlPager: 0,
-  urls: [],
+  urls: ['http://google.com'],
   rankings: [],
+  loading: true,
 }
 
 function handleUrls(){
   state.urls = document.getElementById('urls').value.split("\n");
   document.getElementById('webview').src = state.urls[state.urlPager];
-
+  document.getElementById('currentAddress').innerHTML = state.urls[state.urlPager];
 }
 
 function pushToRankings(rank){
@@ -43,33 +44,65 @@ function pushToRankings(rank){
         site: state.urls[state.urlPager],
         ranking: "site did not load"
       })
+      renderRankingsReview(state.urls[state.urlPager], "site did not load")
       break;
     default:
 
   }
 }
 
+function handleProgress(){
+  let progress = 1 + state.urlPager;
+  document.getElementById('progress').innerHTML = progress + "/" + state.urls.length;
+}
+
 function handleNext(){
   ++state.urlPager;
-  document.getElementById('webview').src = state.urls[state.urlPager]
+  document.getElementById('webview').src = state.urls[state.urlPager];
+  document.getElementById('currentAddress').innerHTML = state.urls[state.urlPager];
 }
 
 function hideUrlInput(){
-    if(document.getElementById('hideshow').innerHTML !== "show"){
-      document.getElementById('urls').style.display = "none";
-      document.getElementById('hideshow').innerHTML = "show";
-    }
-    else if(document.getElementById('hideshow').innerHTML == "show"){
-      document.getElementById('urls').style.display = "inherit";
-      document.getElementById('hideshow').innerHTML = "hide";
-    }
+  var input = document.getElementById('urlInput')
+  if(input.style.display == 'none'){
+    input.style.display = 'block';
+  } else if(input.style.display !== 'none'){
+    input.style.display = 'none';
+  }
 }
 
 function handleRank(rank){
   if(state.urlPager < state.urls.length){
     pushToRankings(rank);
     handleNext();
+    handleProgress();
   }
 }
 
-//add backOneSite(), download(), progress counter, current url display, way to view current session rankings, show/hide url input, keymappings, note input
+function handleDownload(){
+  if(state.rankings.length > 1){
+    var data = [];
+    var csvContent = "data:text/csv;charset=utf-8,";
+    state.rankings.forEach((item) => {
+      console.log(item)
+      var line = [item.site, item.ranking];
+      data.push(line)
+    })
+
+    data.forEach((infoArray, index) =>{
+      let dataString = infoArray.join(",");
+      csvContent += index < data.length ? dataString+ "\n" : dataString;
+    })
+
+    // var encodedUri = encodeURI(csvContent);
+    var hiddenElement = document.createElement('a');
+    hiddenElement.href = encodeURI(csvContent);
+    // hiddenElement.target = '_blank';
+    hiddenElement.download = 'rankings.csv';
+    hiddenElement.click();
+  }
+  else{
+    alert("Rank some sites first!")
+  }
+}
+//add backOneSite(),progress counter, way to view current session rankings, keymappings, loading indicator
