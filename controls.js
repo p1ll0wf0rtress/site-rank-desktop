@@ -9,7 +9,11 @@ let state = {
 
 function handleUrls(){
   state.urls = document.getElementById('urls').value.split("\n");
-  document.getElementById('webview').src = state.urls[state.urlPager];
+  if(state.urls[state.urlPager].toLowerCase().includes('http://')){
+    document.getElementById('webview').src = state.urls[state.urlPager];
+  } else if(state.urls[state.urlPager].toLowerCase().includes('http://') == false) {
+    document.getElementById('webview').src = "http://" +  state.urls[state.urlPager];
+  }
   document.getElementById('currentAddress').innerHTML = state.urls[state.urlPager];
 }
 
@@ -44,7 +48,6 @@ function pushToRankings(rank){
         site: state.urls[state.urlPager],
         ranking: "site did not load"
       })
-      renderRankingsReview(state.urls[state.urlPager], "site did not load")
       break;
     default:
 
@@ -58,7 +61,11 @@ function handleProgress(){
 
 function handleNext(){
   ++state.urlPager;
-  document.getElementById('webview').src = state.urls[state.urlPager];
+  if(state.urls[state.urlPager].toLowerCase().includes('http://')){
+    document.getElementById('webview').src = state.urls[state.urlPager];
+  } else if(state.urls[state.urlPager].toLowerCase().includes('http://') == false) {
+    document.getElementById('webview').src = "http://" +  state.urls[state.urlPager];
+  }
   document.getElementById('currentAddress').innerHTML = state.urls[state.urlPager];
 }
 

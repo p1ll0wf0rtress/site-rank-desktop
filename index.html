@@ -6,11 +6,10 @@
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/animate.css">
-    <script src="./jquery-3.2.1.min.js" charset="utf-8"></script>
   </head>
   <body>
     <div style="position: fixed; top: 0; text-align: right; width: 100%; background-color: #2d2d2d; z-index: 1">
-      <div id="toolbar" style="height: 30px; padding: 0px; margin: 0px 15px 0px 0px;">
+      <div id="toolbar" style="height: 40px; padding: 0px; margin: 0px 15px 0px 0px;">
         <p id="progress" style="padding: 0 20px 0 20px; display: inline-block; color: white;" class="tools"></p>
         <button onclick="hideUrlInput()" id="urlHide" class="tools">Toggle URL Input</button>
         <button class="tools" onclick="handleDownload()">Download</button>
@@ -24,8 +23,8 @@
         <button onclick="handleRank(5)" class="tools">No Site</button>
       </div>
     </div>
-    <webview id="webview" style="width:100%; position: fixed; top: 30px; left: 0; z-index: -1"></webview>
-    <div id="urlInput" class="animated slideInDown" style="position: fixed; top: 30px; z-index: 0">
+    <webview id="webview" style="width:100%; position: fixed; top: 40px; left: 0; z-index: -1"></webview>
+    <div id="urlInput" class="animated slideInDown" style="position: fixed; top: 0px; z-index: 2">
       <textarea name="name" rows="8" cols="80" id="urls" placeholder="put some urls in here!" value="" onchange="handleUrls()" wrap="off" onfocusout="hideUrlInput()"></textarea>
     </div>
     <img src="./Infinity.svg" alt="infinity logo" id="loading" style="height: 75px; width: 100px; position: fixed; bottom: 10px; right: 20px; z-index: 2"/>
