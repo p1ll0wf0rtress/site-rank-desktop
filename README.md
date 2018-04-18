@@ -1,45 +1,27 @@
-# electron-quick-start
+# Site Rank: Desktop Edition
 
-**Clone and run for a quick way to see Electron in action.**
+#### Project Overview
 
-This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start) within the Electron documentation.
+Back in September, 2017 I started with a company and one of my first tasks was to manually copy 1800 company names, urls and phone numbers from a specific source as leads to build a sales territory (unfortunately no user-select, so no copy-paste). The second step was to evaluate the value of each potential lead based on their website. The process went something like this:
 
-**Use this app along with the [Electron API Demos](http://electron.atom.io/#get-started) app for API code examples to help you get started.**
+* Copy 30 urls from my spreadsheet
+* Paste into Bulk URL Opener Chrome Extension
+* Scroll around, decide validity of lead
+* Switch applications to Excel, mark down lead as High, Medium, or Low value lead
+* Switch back to Chrome, close current tab
+* Repeat for the next 1800 websites, 30 at a time
 
-A basic Electron application needs just these files:
+After a day of doing this, I was pretty mentally drained and knew if there wasn't a better way out there, I had to build one for my own sanity.
 
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
+Initially, I tried to do this in the browser but a lot of sites won't load into an <iframe> tag. I had played around with Electron a bit before this project, but got some real experience working with Electon's APIs here.
+  
+Essentially, this tool allowed a list of urls to be pasted into the state, and would load the sites automatically after ranking with one of the three buttons indicating "High", "Medium", or "Low".
 
-You can learn more about each of these components within the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start).
+At the end of the site list, the user can export the list with the rankings.
 
-## To Use
+My colleagues and I went from rating around 30 sites per hour to around 100 per hour. Without the fatigue of switching back and forth between Chrome and Excel, and the limit of only reasonably being able to open 30 tabs at a time, the time spent administering this process was automated and made into a single click per site.
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+#### Tools Used
 
-```bash
-# Clone this repository
-git clone https://github.com/electron/electron-quick-start
-# Go into the repository
-cd electron-quick-start
-# Install dependencies
-npm install
-# Run the app
-npm start
-```
-
-Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
-
-## Resources for Learning Electron
-
-- [electron.atom.io/docs](http://electron.atom.io/docs) - all of Electron's documentation
-- [electron.atom.io/community/#boilerplates](http://electron.atom.io/community/#boilerplates) - sample starter apps created by the community
-- [electron/electron-quick-start](https://github.com/electron/electron-quick-start) - a very basic starter Electron app
-- [electron/simple-samples](https://github.com/electron/simple-samples) - small applications with ideas for taking them further
-- [electron/electron-api-demos](https://github.com/electron/electron-api-demos) - an Electron app that teaches you how to use Electron
-- [hokein/electron-sample-apps](https://github.com/hokein/electron-sample-apps) - small demo apps for the various Electron APIs
-
-## License
-
-[CC0 1.0 (Public Domain)](LICENSE.md)
+Electron
+React
