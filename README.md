@@ -20,8 +20,3 @@ Essentially, this tool allowed a list of urls to be pasted into the state, and w
 At the end of the site list, the user can export the list with the rankings.
 
 My colleagues and I went from rating around 30 sites per hour to around 100 per hour. Without the fatigue of switching back and forth between Chrome and Excel, and the limit of only reasonably being able to open 30 tabs at a time, the time spent administering this process was automated and made into a single click per site.
-
-#### Tools Used
-
-Electron
-React
